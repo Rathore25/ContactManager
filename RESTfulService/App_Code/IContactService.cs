@@ -12,7 +12,7 @@ namespace RESTfulService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IUserService" in both code and config file together.
     [ServiceContract]
-    public interface IUserService
+    public interface IContactService
     {
 
         #region Create
@@ -25,7 +25,7 @@ namespace RESTfulService
                     UriTemplate = "/Add"
                    )]
 
-        string AddUser(Contact userData); 
+        string AddUser(Contact userData);
         #endregion
 
         #region Update
@@ -34,7 +34,7 @@ namespace RESTfulService
                     Method = "POST",
                     RequestFormat = WebMessageFormat.Json,
                     ResponseFormat = WebMessageFormat.Json,
-                    BodyStyle=WebMessageBodyStyle.WrappedResponse,
+                    BodyStyle = WebMessageBodyStyle.WrappedResponse,
                     UriTemplate = "/User"
                    )]
 
@@ -45,11 +45,11 @@ namespace RESTfulService
                     Method = "POST",
                     RequestFormat = WebMessageFormat.Json,
                     ResponseFormat = WebMessageFormat.Json,
-                    BodyStyle=WebMessageBodyStyle.WrappedResponse,
+                    BodyStyle = WebMessageBodyStyle.WrappedResponse,
                     UriTemplate = "/Update"
                    )]
 
-        string UpdateUser(Contact userData); 
+        string UpdateUser(Contact userData);
         #endregion
 
         #region Retrieve
@@ -75,7 +75,7 @@ namespace RESTfulService
                     UriTemplate = "/Delete"
                    )]
 
-        string DeleteUser(string uid); 
+        string DeleteUser(string uid);
         #endregion
-    }    
+    }
 }

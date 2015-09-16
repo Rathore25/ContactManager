@@ -68,6 +68,17 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataScripts\ContactManager Scripts\account_base Table.sql" />
+    <Content Include="DataScripts\ContactManager Scripts\contact_base Table.sql" />
+    <Content Include="DataScripts\ContactManager Scripts\udsp_Account_Login.sql" />
+    <Content Include="DataScripts\ContactManager Scripts\udsp_Account_Register.sql" />
+    <Content Include="DataScripts\ContactManager Scripts\udsp_Account_Retrieve.sql" />
+    <Content Include="DataScripts\ContactManager Scripts\udsp_Contact_Create.sql" />
+    <Content Include="DataScripts\ContactManager Scripts\udsp_Contact_Delete.sql" />
+    <Content Include="DataScripts\ContactManager Scripts\udsp_Contact_Retrieve.sql" />
+    <Content Include="DataScripts\ContactManager Scripts\udsp_Contact_Update.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccountService.svc" />
-    <Content Include="UserService.svc" />
+    <Content Include="ContactService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -82,10 +82,10 @@
       <DependentUpon>AccountService.svc</DependentUpon>
     </Compile>
     <Compile Include="App_Code\IAccountService.cs" />
-    <Compile Include="UserService.svc.cs">
-      <DependentUpon>UserService.svc</DependentUpon>
+    <Compile Include="ContactService.svc.cs">
+      <DependentUpon>ContactService.svc</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\IUserService.cs" />
+    <Compile Include="App_Code\IContactService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

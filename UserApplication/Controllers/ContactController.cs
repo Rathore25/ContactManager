@@ -53,7 +53,7 @@ namespace ContactManager.Controllers
             try
             {
                 string Result   = string.Empty;
-                var Data        = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "UserService.svc/Add", "POST", JsonConvert.SerializeObject(UserData, DateFormat))) as JToken;
+                var Data = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "ContactService.svc/Add", "POST", JsonConvert.SerializeObject(UserData, DateFormat))) as JToken;
                 Result          = Data["AddUserResult"].ToString();
 
                 if (Result.Equals("Success"))
@@ -89,7 +89,7 @@ namespace ContactManager.Controllers
                     FormsAuthenticationTicket Ticket    = FormsAuthentication.Decrypt(AuthCookie.Value);
                     RegisterModel RegisteredUserData    = JsonConvert.DeserializeObject<RegisterModel>(Ticket.UserData);
                     string AccountRelatedId                          = RegisteredUserData.Guid;
-                    var UserDataResponse                = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "UserService.svc/Users", "POST", JsonConvert.SerializeObject(AccountRelatedId, Formatting.Indented))) as JToken;
+                    var UserDataResponse = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "ContactService.svc/Users", "POST", JsonConvert.SerializeObject(AccountRelatedId, Formatting.Indented))) as JToken;
                     
                     if (UserDataResponse != null)
                     {
@@ -124,7 +124,7 @@ namespace ContactManager.Controllers
             try
             {
                 var userId = id;
-                var UserDataResponse = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "UserService.svc/User", "POST", JsonConvert.SerializeObject(userId, Formatting.Indented))) as JToken;
+                var UserDataResponse = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "ContactService.svc/User", "POST", JsonConvert.SerializeObject(userId, Formatting.Indented))) as JToken;
 
                 if (UserDataResponse != null)
                 {
@@ -171,7 +171,7 @@ namespace ContactManager.Controllers
                     UserData.PhoneNumber    = (Contact.PhoneNumber ?? string.Empty);
                     UserData.EmailId        = (Contact.EmailId ?? string.Empty);
                     string Result           = string.Empty;
-                    var Data                = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "UserService.svc/Update", "POST", JsonConvert.SerializeObject(UserData, DateFormat))) as JToken;
+                    var Data = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "ContactService.svc/Update", "POST", JsonConvert.SerializeObject(UserData, DateFormat))) as JToken;
                     Result                  = Data["UpdateUserResult"].ToString();
                     if (Result.Equals("Success"))
                     {
@@ -201,7 +201,7 @@ namespace ContactManager.Controllers
             try
             {
                 string Result = string.Empty;
-                var Data = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "UserService.svc/Delete", "POST", JsonConvert.SerializeObject(uid))) as JToken;
+                var Data = JsonConvert.DeserializeObject(Utilities.HttpRequest.GetHttpRequest(_url + "ContactService.svc/Delete", "POST", JsonConvert.SerializeObject(uid))) as JToken;
                 if (Data != null)
                 {
                     Result = Data["DeleteUserResult"].ToString();

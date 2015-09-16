@@ -12,16 +12,16 @@ using Newtonsoft.Json;
 
 namespace RESTfulService
 {
-    public class UserService : IUserService
+    public class ContactService : IContactService
     {
 
-        private static readonly ILog _log = LogManager.GetLogger(typeof(UserService).Name);
+        private static readonly ILog _log = LogManager.GetLogger(typeof(ContactService).Name);
 
         #region Create
         public string AddUser(Contact userData)
         {
             _log.Info("AddUser Entered");
-            _log.Debug("userData :"+ JsonConvert.SerializeObject(userData,Formatting.Indented));
+            _log.Debug("userData :" + JsonConvert.SerializeObject(userData, Formatting.Indented));
 
             try
             {
@@ -39,14 +39,14 @@ namespace RESTfulService
             {
                 _log.Info("AddUser Exited");
             }
-        } 
+        }
         #endregion
 
         #region Retrieve
         public List<Contact> RetrieveAllUsers(string AccountRelatedId)
         {
             _log.Info("RetrieveAllUsers Entered");
-            _log.Debug("Parameter id:"+AccountRelatedId);
+            _log.Debug("Parameter id:" + AccountRelatedId);
             try
             {
                 List<Contact> ListOut = BusinessLayer.Contacts.RetrieveAllContact(AccountRelatedId);
@@ -57,7 +57,7 @@ namespace RESTfulService
             catch (Exception ex)
             {
                 _log.Error("Unexpected Error :" + ex.Message);
-                MyCustomErrorDetail Error = new MyCustomErrorDetail("Unexpected Error caused by " + ex.Source, ex.Message);
+                MyCustomErrorDetail Error = new MyCustomErrorDetail("Unexpected Error", ex.Message);
                 throw new WebFaultException<MyCustomErrorDetail>(Error, System.Net.HttpStatusCode.InternalServerError);
             }
             finally
@@ -71,7 +71,7 @@ namespace RESTfulService
         public Contact RetrieveUser(string userId)
         {
             _log.Info("RetrieveUser Entered");
-            _log.Debug("Parameter :"+userId);
+            _log.Debug("Parameter :" + userId);
             try
             {
                 Contact Data = BusinessLayer.Contacts.RetrieveContact(userId);
@@ -91,7 +91,7 @@ namespace RESTfulService
             catch (Exception ex)
             {
                 _log.Error("Unexpected Error :" + ex.Message);
-                MyCustomErrorDetail Error = new MyCustomErrorDetail("Unexpected Error caused by " + ex.Source, ex.Message);
+                MyCustomErrorDetail Error = new MyCustomErrorDetail("Unexpected Error", ex.Message);
                 throw new WebFaultException<MyCustomErrorDetail>(Error, System.Net.HttpStatusCode.InternalServerError);
             }
             finally
@@ -103,7 +103,7 @@ namespace RESTfulService
         public string UpdateUser(DataObject.Contact userData)
         {
             _log.Info("UpdateUser Entered");
-            _log.Debug("Parameter :"+JsonConvert.SerializeObject(userData,Formatting.Indented));
+            _log.Debug("Parameter :" + JsonConvert.SerializeObject(userData, Formatting.Indented));
             try
             {
                 BusinessLayer.Contacts.EditContact(userData);
@@ -120,14 +120,14 @@ namespace RESTfulService
             {
                 _log.Info("UpdateUser Exited");
             }
-        } 
+        }
         #endregion
 
         #region Delete
         public string DeleteUser(string uid)
         {
             _log.Info("DeleteUser Entered");
-            _log.Debug("Parameter id:"+uid);
+            _log.Debug("Parameter id:" + uid);
             try
             {
                 BusinessLayer.Contacts.DeleteContact(uid);
@@ -144,7 +144,7 @@ namespace RESTfulService
             {
                 _log.Info("DeleteUser Exited");
             }
-        } 
+        }
         #endregion
 
     }

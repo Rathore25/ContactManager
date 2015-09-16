@@ -61,7 +61,7 @@ namespace RESTfulService
             catch (Exception ex)
             {
                 _log.Error(ex.Message);
-                MyCustomErrorDetail Error = new MyCustomErrorDetail("Unexpected error caused by " + ex.Source, ex.Message);
+                MyCustomErrorDetail Error = new MyCustomErrorDetail("Unexpected error", ex.Message);
                 throw new WebFaultException<MyCustomErrorDetail>(Error, System.Net.HttpStatusCode.InternalServerError);
             }
             finally
@@ -91,7 +91,7 @@ namespace RESTfulService
             catch (Exception ex)
             {
                 _log.Error(ex.Message);
-                MyCustomErrorDetail Error = new MyCustomErrorDetail("Unexpected Error caused by " + ex.Source, ex.Message);
+                MyCustomErrorDetail Error = new MyCustomErrorDetail("Unexpected Error" + ex.Source, ex.Message);
                 throw new WebFaultException<MyCustomErrorDetail>(Error, System.Net.HttpStatusCode.InternalServerError);
             }
             finally

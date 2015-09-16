@@ -18,7 +18,7 @@ namespace DataAccessLayer
         private static string ConnString = ConfigurationManager.ConnectionStrings["MainConnectionString"].ConnectionString;
 
         #region CreateRow
-        public static void Create(DataObject.Contact UserData)
+        public static void Create(Contact UserData)
         {
             _log.Info("DatabaseConnectionProvider.Create entered");
             _log.Debug("Parameter : " + JsonConvert.SerializeObject(UserData, Formatting.Indented));
@@ -27,16 +27,17 @@ namespace DataAccessLayer
             try
             {
                 Connection.Open();
-                MySqlCommand InsertCommand = new MySqlCommand("udsp_userdataschema_create", Connection);
-                InsertCommand.CommandType = CommandType.StoredProcedure;
-                //InsertCommand.CommandText = "INSERT INTO usertable(uid,name,dob,city,phone,emailid,fid) VALUES(@uid,@list0,@list1,@list2,@list3,@list4,@list5)";
-                Guid GuidId = Guid.NewGuid();
-                InsertCommand.Parameters.AddWithValue("var_ContactId", GuidId.ToString());
-                InsertCommand.Parameters.AddWithValue("var_Name", UserData.Name);
-                InsertCommand.Parameters.AddWithValue("var_Dob", UserData.Dob);
-                InsertCommand.Parameters.AddWithValue("var_City", UserData.City);
-                InsertCommand.Parameters.AddWithValue("var_Phone", UserData.PhoneNumber);
-                InsertCommand.Parameters.AddWithValue("var_EmailId", UserData.EmailId);
+                
+                MySqlCommand InsertCommand  = new MySqlCommand("udsp_Contact_Create", Connection);
+                InsertCommand.CommandType   = CommandType.StoredProcedure;                
+                Guid GuidId                 = Guid.NewGuid();
+
+                InsertCommand.Parameters.AddWithValue("var_ContactId"       , GuidId.ToString());
+                InsertCommand.Parameters.AddWithValue("var_Name"            , UserData.Name);
+                InsertCommand.Parameters.AddWithValue("var_Dob"             , UserData.Dob);
+                InsertCommand.Parameters.AddWithValue("var_City"            , UserData.City);
+                InsertCommand.Parameters.AddWithValue("var_Phone"           , UserData.PhoneNumber);
+                InsertCommand.Parameters.AddWithValue("var_EmailId"         , UserData.EmailId);
                 InsertCommand.Parameters.AddWithValue("var_AccountRelatedId", UserData.AccountId);
                 if (InsertCommand.ExecuteNonQuery() == 0)
                 {
@@ -72,25 +73,28 @@ namespace DataAccessLayer
             try
             {
                 Connection.Open();
-                MySqlCommand SelectCommand = new MySqlCommand("udsp_userdataschema_retrieve", Connection);
-                SelectCommand.CommandType = CommandType.StoredProcedure;
-                SelectCommand.Parameters.AddWithValue("var_ContactId", string.Empty);
+                MySqlCommand SelectCommand  = new MySqlCommand("udsp_Contact_Retrieve", Connection);
+                SelectCommand.CommandType   = CommandType.StoredProcedure;
+
+                SelectCommand.Parameters.AddWithValue("var_ContactId"       , string.Empty);
                 SelectCommand.Parameters.AddWithValue("var_AccountRelatedId", AccountRelatedId);
+
                 List<Contact> UserData = new List<Contact>();
                 using (MySqlDataReader Reader = SelectCommand.ExecuteReader())
                 {
 
                     while (Reader.Read())
                     {
-                        Contact RowData = new Contact();
-                        RowData.AutoId = Reader["ContactAutoId"].ToString();
-                        RowData.Uid = Reader["ContactId"].ToString();
-                        RowData.Name = Reader["Name"].ToString();
-                        RowData.Dob = Convert.ToDateTime(Reader["Dob"]);
-                        RowData.City = Reader["City"].ToString();
+                        Contact RowData     = new Contact();
+                        RowData.AutoId      = Reader["ContactAutoId"].ToString();
+                        RowData.Uid         = Reader["ContactId"].ToString();
+                        RowData.Name        = Reader["Name"].ToString();
+                        RowData.Dob         = Convert.ToDateTime(Reader["Dob"]);
+                        RowData.City        = Reader["City"].ToString();
                         RowData.PhoneNumber = Reader["Phone"].ToString();
-                        RowData.EmailId = Reader["EmailId"].ToString();
-                        RowData.AccountId = Reader["AccountRelatedId"].ToString();
+                        RowData.EmailId     = Reader["EmailId"].ToString();
+                        RowData.AccountId   = Reader["AccountRelatedId"].ToString();
+
                         UserData.Add(RowData);
                     }
                 }
@@ -119,7 +123,7 @@ namespace DataAccessLayer
 
         #region UpdateRow
         #region SpecificRowData
-        public static DataObject.Contact Retrieve(string uid)
+        public static Contact Retrieve(string uid)
         {
             _log.Info("DatabaseConnectionProvider.Retrieve entered");
             _log.Debug("Parameter autoId : " + uid);
@@ -128,23 +132,24 @@ namespace DataAccessLayer
             try
             {
                 Connection.Open();
-                MySqlCommand SpecificUserCommand = new MySqlCommand("udsp_userdataschema_retrieve", Connection);
-                SpecificUserCommand.CommandType = CommandType.StoredProcedure;
-                SpecificUserCommand.Parameters.AddWithValue("var_ContactId", uid);
-                SpecificUserCommand.Parameters.AddWithValue("var_AccountRelatedId", string.Empty);
+                MySqlCommand SpecificUserCommand    = new MySqlCommand("udsp_Contact_Retrieve", Connection);
+                SpecificUserCommand.CommandType     = CommandType.StoredProcedure;
+
+                SpecificUserCommand.Parameters.AddWithValue("var_ContactId"         , uid);
+                SpecificUserCommand.Parameters.AddWithValue("var_AccountRelatedId"  , string.Empty);
                 MySqlDataReader Reader = SpecificUserCommand.ExecuteReader();
 
-                DataObject.Contact UserRow = new DataObject.Contact();
+                Contact UserRow = new Contact();
                 while (Reader.Read())
                 {
-                    UserRow.AutoId = (Reader["ContactAutoId"].ToString());
-                    UserRow.Uid = (Reader["ContactId"].ToString());
-                    UserRow.Name = (Reader["Name"].ToString());
-                    UserRow.Dob = (Convert.ToDateTime(Reader["Dob"]));
-                    UserRow.City = (Reader["City"].ToString());
+                    UserRow.AutoId      = (Reader["ContactAutoId"].ToString());
+                    UserRow.Uid         = (Reader["ContactId"].ToString());
+                    UserRow.Name        = (Reader["Name"].ToString());
+                    UserRow.Dob         = (Convert.ToDateTime(Reader["Dob"]));
+                    UserRow.City        = (Reader["City"].ToString());
                     UserRow.PhoneNumber = (Reader["Phone"].ToString());
-                    UserRow.EmailId = (Reader["EmailId"].ToString());
-                    UserRow.AccountId = (Reader["AccountRelatedId"].ToString());
+                    UserRow.EmailId     = (Reader["EmailId"].ToString());
+                    UserRow.AccountId   = (Reader["AccountRelatedId"].ToString());
                 }
                 _log.Debug("Result :=" + JsonConvert.SerializeObject(UserRow, Formatting.Indented));
                 return UserRow;
@@ -170,7 +175,7 @@ namespace DataAccessLayer
         #endregion
 
         #region EditRow
-        public static void Update(DataObject.Contact RowData)
+        public static void Update(Contact RowData)
         {
             _log.Info("DatabaseConnectionProvider.Update entered");
             _log.Debug("parameter =" + RowData);
@@ -179,15 +184,15 @@ namespace DataAccessLayer
             try
             {
                 Connection.Open();
-                MySqlCommand UpdateCommand = new MySqlCommand("udsp_userdataschema_update", Connection);
-                UpdateCommand.CommandType = CommandType.StoredProcedure;
+                MySqlCommand UpdateCommand  = new MySqlCommand("udsp_Contact_Update", Connection);
+                UpdateCommand.CommandType   = CommandType.StoredProcedure;
 
-                UpdateCommand.Parameters.AddWithValue("var_ContactId", RowData.Uid);
-                UpdateCommand.Parameters.AddWithValue("var_Name", RowData.Name);
-                UpdateCommand.Parameters.AddWithValue("var_Dob", RowData.Dob);
-                UpdateCommand.Parameters.AddWithValue("var_City", RowData.City);
-                UpdateCommand.Parameters.AddWithValue("var_Phone", RowData.PhoneNumber);
-                UpdateCommand.Parameters.AddWithValue("var_EmailId", RowData.EmailId);
+                UpdateCommand.Parameters.AddWithValue("var_ContactId"       , RowData.Uid);
+                UpdateCommand.Parameters.AddWithValue("var_Name"            , RowData.Name);
+                UpdateCommand.Parameters.AddWithValue("var_Dob"             , RowData.Dob);
+                UpdateCommand.Parameters.AddWithValue("var_City"            , RowData.City);
+                UpdateCommand.Parameters.AddWithValue("var_Phone"           , RowData.PhoneNumber);
+                UpdateCommand.Parameters.AddWithValue("var_EmailId"         , RowData.EmailId);
                 UpdateCommand.Parameters.AddWithValue("var_AccountRelatedId", RowData.AccountId);
                 if (UpdateCommand.ExecuteNonQuery() == 0)
                 {
@@ -225,7 +230,7 @@ namespace DataAccessLayer
             try
             {
                 Connection.Open();
-                MySqlCommand DeleteCommand = new MySqlCommand("udsp_userdataschema_delete", Connection);
+                MySqlCommand DeleteCommand = new MySqlCommand("udsp_Contact_Delete", Connection);
                 DeleteCommand.CommandType = CommandType.StoredProcedure;
 
                 DeleteCommand.Parameters.AddWithValue("var_ContactId", uid);
@@ -253,7 +258,6 @@ namespace DataAccessLayer
                     Connection.Close();
                 _log.Info("DatabaseConnectionProvider.Delete exited");
             }
-
         }
         #endregion
     }

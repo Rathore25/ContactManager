@@ -29,14 +29,14 @@ namespace DataAccessLayer
             try
             {
                 Connection.Open();
-                MySqlCommand Command = new MySqlCommand("udsp_account_register", Connection);
+                MySqlCommand Command = new MySqlCommand("udsp_Account_Register", Connection);
                 Command.CommandType = CommandType.StoredProcedure;
 
-                Command.Parameters.AddWithValue("var_AccountId", Guid.NewGuid().ToString());
-                Command.Parameters.AddWithValue("var_Username", accountData.UserName);
-                Command.Parameters.AddWithValue("var_Password", accountData.Password);
-                Command.Parameters.AddWithValue("var_FullName", accountData.FullName);
-                Command.Parameters.AddWithValue("var_EmailId", accountData.EmailId);
+                Command.Parameters.AddWithValue("var_AccountId" , Guid.NewGuid().ToString());
+                Command.Parameters.AddWithValue("var_Username"  , accountData.UserName);
+                Command.Parameters.AddWithValue("var_Password"  , accountData.Password);
+                Command.Parameters.AddWithValue("var_FullName"  , accountData.FullName);
+                Command.Parameters.AddWithValue("var_EmailId"   , accountData.EmailId);
                 
                 if (Command.ExecuteNonQuery() == 0)
                 {
@@ -74,7 +74,7 @@ namespace DataAccessLayer
             {
                 Connection.Open();
                 DataObject.Register AccountData = new DataObject.Register();
-                MySqlCommand ValidateCommand = new MySqlCommand("udsp_account_validate", Connection);
+                MySqlCommand ValidateCommand = new MySqlCommand("udsp_Account_Login", Connection);
                 ValidateCommand.CommandType = CommandType.StoredProcedure;
                 Guid GuidId = Guid.NewGuid();
                 
@@ -124,21 +124,21 @@ namespace DataAccessLayer
             {
                 Connection.Open();
                 DataObject.Register Password = new DataObject.Register();
-                MySqlCommand RetrieveCommand = new MySqlCommand("udsp_account_retrieve", Connection);
+                MySqlCommand RetrieveCommand = new MySqlCommand("udsp_Account_Retrieve", Connection);
                 RetrieveCommand.CommandType = CommandType.StoredProcedure;
                 Guid GuidId = Guid.NewGuid();
-                RetrieveCommand.Parameters.AddWithValue("var_Username", userData.UserName);
-                RetrieveCommand.Parameters.AddWithValue("var_EmailId", userData.EmailId);
+                RetrieveCommand.Parameters.AddWithValue("var_Username"  , userData.UserName);
+                RetrieveCommand.Parameters.AddWithValue("var_EmailId"   , userData.EmailId);
                 MySqlDataReader Reader = RetrieveCommand.ExecuteReader();
 
                 while (Reader.Read())
                 {
-                    Password.AutoId = string.Empty;
-                    Password.Guid = string.Empty;
-                    Password.UserName = string.Empty;
-                    Password.Password = Reader["Password"].ToString();
-                    Password.FullName = string.Empty;
-                    Password.EmailId = string.Empty;
+                    Password.AutoId     = string.Empty;
+                    Password.Guid       = string.Empty;
+                    Password.UserName   = string.Empty;
+                    Password.Password   = Reader["Password"].ToString();
+                    Password.FullName   = string.Empty;
+                    Password.EmailId    = string.Empty;
                 }
                 _log.Debug("Result :" + JsonConvert.SerializeObject(Password, Formatting.Indented));
                 return Password;
