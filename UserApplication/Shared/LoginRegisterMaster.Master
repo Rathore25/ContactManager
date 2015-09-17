@@ -8,14 +8,13 @@
         type="image/x-icon" />
     <link id="Link2" runat="server" rel="icon" href="~/Content/Images/iOS-contacts-logo.ico"
         type="image/ico" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
     <style type="text/css">
         #Body
         {
-            background-image: url("../../Content/images/BlackWhiteAbstract-Polygon-Background-02-1024.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/BlackWhiteAbstract-Polygon-Background-02-1024.jpg")%>");
             height: 100%;
             width: 100%;
             font-family: 'Segoe UI' , Frutiger, 'Frutiger Linotype' , 'Dejavu Sans' , 'Helvetica Neue' , Arial, sans-serif;
@@ -30,7 +29,7 @@
             margin-right: 10px;
             border-bottom-style: solid;
             border-bottom-color: rgb(217,133,80);
-            background-image: url("../../Content/images/Polygon-final.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/Polygon-final.jpg")%>");
             color: rgb(51,79,78);
         }
         #Div-LogoHeadingSubheading
@@ -65,7 +64,7 @@
 <body id="Body" onload="init()">
     <div id="Header">
         <div id="Div-LogoHeadingSubheading">
-            <img id="Logo" src="../../Content/images/iOS-contacts-logo.png" alt="Logo" />
+            <img id="Logo" src="<%:Url.Content("~/Content/images/iOS-contacts-logo.png") %>" alt="Logo" />
             <h1 id="Heading">
                 iManager</h1>
             <h3 id="SubHeading">

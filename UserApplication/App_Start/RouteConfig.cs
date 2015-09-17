@@ -16,7 +16,7 @@ namespace ContactManager
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Contact", action = "Index" }
+                defaults: new { controller = "Home", action = "Login" }
             );
         }
     }

@@ -49,7 +49,7 @@
        #Body 
        {
             font-family: "Segoe UI" , Frutiger, "Frutiger Linotype" , "Dejavu Sans" , "Helvetica Neue" , Arial, sans-serif;
-            background-image: url("../../Content/images/BlackWhiteAbstract-Polygon-Background-02-1024.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/BlackWhiteAbstract-Polygon-Background-02-1024.jpg")%>");
             height: 100%;
             width: 100%;
             margin-top:0px;
@@ -104,12 +104,9 @@
         }
         #Div-Table
         {
-            /*background-image: url("../../Content/images/Polygon-final.jpg");*/
             display: block;
             margin-left: auto;
             margin-right: auto;
-            /*width: 1000px;*/
-            /* margin-top: 65px; */
             margin-bottom: 100px;
             animation-duration: 1s;
             animation-name: fadeInDown;
@@ -258,14 +255,13 @@
         }
         #Delete
         {
-            background-image:url("../Content/images/delete-20x20.png");
+            background-image:url("<%:Url.Content("~/Content/images/delete-20x20.png")%>");
             display:block;
             float:right;
             height:20px;
             width:20px;
             text-decoration:none;
             margin-left:5px;
-            /*color:rgb(51,79,78);*/
             background-color:transparent;
         }
         #Delete:hover
@@ -274,13 +270,12 @@
         }
         #Update
         {
-            background-image:url("../Content/images/edit-20x20.png");
+            background-image:url("<%:Url.Content("~/Content/images/edit-20x20.png")%>");
             display:block;
             float:left;
             height:20px;
             width:20px;
             text-decoration:none;
-            /*color:rgb(51,79,78);*/
             background-color:transparent;
         }
         #Update:hover
@@ -319,7 +314,7 @@
             margin-right: 10px;
             border-bottom-style: solid;
             border-bottom-color: rgb(217,133,80);
-            background-image: url("../../Content/images/Polygon-final.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/Polygon-final.jpg")%>");
             color: rgb(51,79,78);
         }
         #Div-LogoHeadingSubheading
@@ -373,15 +368,15 @@
 <body id="Body">
     <div id="Header">
         <div id="Div-LogoHeadingSubheading">
-            <img id="Logo" src="../../Content/images/iOS-contacts-logo.png" alt="Logo" />
+            <img id="Logo" src="<%:Url.Content("~/Content/images/iOS-contacts-logo.png") %>" alt="Logo" />
             <h1 id="Heading">
                 iManager</h1>
             <h3 id="SubHeading">
                 -Manage your contacts easily</h3>
         </div>
         <div id="Div-Logout">
-            <a href="/Home/Logout" title="Logout" style="float: right; padding: 10px;">
-                <img id="Logout" src="../../Content/images/Logout.png" alt="Logo" /></a>
+            <a href="../Home/Logout" title="Logout" style="float: right; padding: 10px;">
+                <img id="Logout" src="<%:Url.Content("~/Content/images/Logout.png") %>" alt="Logo" /></a>
         </div>
     </div>
     <div id="Div-Background">
@@ -396,7 +391,7 @@
                     My Contacts</h1>
             </div>
             <div style="width:70px; display:none">
-                <img id="exportpdf" src="../../Content/images/SaveAsPdf 35x35.png" title="Export to pdf" alt="Export to pdf" /></div>
+                <img id="exportpdf" src="<%:Url.Content("~/Content/images/SaveAsPdf 35x35.png") %>" title="Export to pdf" alt="Export to pdf" /></div>
         </div>
         <div id="Div-Header">
             <%: Html.ActionLink("Create", "Create", "Contact",   

@@ -8,7 +8,7 @@
     <style type="text/css">
         #Body
         {
-            background-image:url("../../Content/Images/BlackWhiteAbstract-Polygon-Background-02-1024.jpg");
+            background-image:url("<%:Url.Content("~/Content/Images/BlackWhiteAbstract-Polygon-Background-02-1024.jpg")%>");
             height:100%;
             width:100%;
         }
@@ -32,7 +32,7 @@
         }
         #Background0
         {
-            background-image: url("../../Content/images/Polygon-final.jpg");            
+            background-image: url("~/Content/images/Polygon-final.jpg");            
             text-align: center;
             color: rgb(51,79,78);
             color: #3A5919;
@@ -42,7 +42,7 @@
 </head>
 <body id="Body">
     <div id="Div-Logo">
-        <img id="Logo" src="../../Content/images/oie_transparent.png" alt="Logo" />
+        <img id="Logo" src="<%:Url.Content("~/Content/images/oie_transparent.png")%>" alt="Logo" />
     </div>
     <div id="Background0">
         <div id="Div-HeadingName">
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="Return">
-        <%: Html.ActionLink("Back to List", "Index","Contact") %>
+        <%: Html.ActionLink("Back", "Index","Contact") %>
     </div>
 </body>
 </html>

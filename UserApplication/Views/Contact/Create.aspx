@@ -35,7 +35,7 @@
                         debugger;
                         if (data.Status == "Success") {
                             $("#Message").html(data.Result).css('color', 'green');
-                            setTimeout(function () { window.location = "/Contact/Index"; }, 3000);
+                            setTimeout(function () { window.location = "../Contact/Index"; }, 3000);
                         }
                         else {
                             $("#Message").html(data.Result).css('color', 'red'); ;
@@ -228,7 +228,7 @@
             border-style: solid;
             border-width: 3px;
             border-color: rgb(217,133,59);
-            background-image: url("../../Content/images/Polygon-final.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/Polygon-final.jpg")%>");
             background-color: transparent;
             padding: 20px;
             display: block;
@@ -251,11 +251,6 @@
         }
         .ChangeViewButton
         {
-            /*background-image: url("../../Content/images/contacts-iconSmall.png");
-            display:-webkit-inline-box;
-            height:35px;
-            width:56px;
-            border-radius:20px;*/
             text-decoration:none;
             color:rgb(51,79,78);
             background-color:transparent;
@@ -264,7 +259,6 @@
         .ChangeViewButton:hover
         {
             color:rgb(230,100,50);
-            /*background-image: url("../../Content/images/OnHover.png");*/
         }
         .ErrorLabel
         {

@@ -60,9 +60,12 @@ namespace ContactManager.Controllers
         #endregion
 
         #region Login
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
             _log.Info("Login Entered");
+            if (returnUrl == "/")
+                returnUrl = string.Empty;
+            ViewBag.ReturnUrl = returnUrl;
             ViewBag.ErrorMessage = null;
             _log.Info("Login Exited");
             return View();
@@ -70,7 +73,7 @@ namespace ContactManager.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Login(LoginModel model)
+        public ActionResult Login(LoginModel model, string returnUrl)
         {
             _log.Info("Login FormPost Entered");
             _log.Debug("Parameter :"+model);
@@ -90,8 +93,7 @@ namespace ContactManager.Controllers
                             1,
                             AccountData.UserName,
                             DateTime.Now,
-                            DateTime.Now.AddMinutes(5),
-                            false,
+                            DateTime.Now.AddMinutes(5),false,
                             JsonConvert.SerializeObject(AccountData, Formatting.Indented),
                             FormsAuthentication.FormsCookiePath);
 
@@ -104,7 +106,15 @@ namespace ContactManager.Controllers
                     }
 
                     System.Web.HttpContext.Current.Response.Cookies.Add(Cookie);
-                    return RedirectToAction("Index", "Contact");
+
+                    if (string.IsNullOrEmpty(returnUrl))
+                    {
+                        return RedirectToAction("Index", "Contact");
+                    }
+                    else
+                    {
+                        return Redirect(returnUrl);
+                    }
                 }
                 else
                 {

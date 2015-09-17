@@ -128,7 +128,7 @@
             border-style: solid;
             border-width: 3px;
             border-color: rgb(217,133,59);
-            background-image: url("../../Content/images/Polygon-final.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/Polygon-final.jpg")%>");
             background-color: transparent;
             padding: 20px;
             display: block;

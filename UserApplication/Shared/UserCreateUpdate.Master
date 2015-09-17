@@ -12,7 +12,7 @@
     <style type="text/css">
         #Body
         {
-            background-image: url("../../Content/images/BlackWhiteAbstract-Polygon-Background-02-1024.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/BlackWhiteAbstract-Polygon-Background-02-1024.jpg") %>");
             height: 100%;
             width: 100%;
             font-family: 'Segoe UI' , Frutiger, 'Frutiger Linotype' , 'Dejavu Sans' , 'Helvetica Neue' , Arial, sans-serif;
@@ -27,7 +27,7 @@
             margin-right: 10px;
             border-bottom-style: solid;
             border-bottom-color: rgb(217,133,80);
-            background-image: url("../../Content/images/Polygon-final.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/Polygon-final.jpg") %>");
             color: rgb(51,79,78);
         }
         #Div-LogoHeadingSubheading
@@ -95,7 +95,7 @@
 <body id="Body" onload="init()">
     <div id="Header">
         <div id="Div-LogoHeadingSubheading">
-            <img id="Logo" src="../../Content/images/iOS-contacts-logo.png" alt="Logo" />
+            <img id="Logo" src="<%:Url.Content("~/Content/images/iOS-contacts-logo.png") %>" alt="Logo" />
             <h1 id="Heading">
                 iManager</h1>
             <h3 id="SubHeading">
@@ -103,7 +103,7 @@
         </div>
         <div id="Div-Logout">
             <a href="/Home/Logout" style="float:right;padding:10px;">
-                <img id="Logout" src="../../Content/images/Logout.png" alt="Logo" /></a>
+                <img id="Logout" src="<%:Url.Content("~/Content/images/Logout.png") %>" alt="Logo" /></a>
         </div>
     </div>
     <asp:ContentPlaceHolder ID="MainContent" runat="server">

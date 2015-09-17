@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
     <script language="javascript" type="text/javascript">
-        var userNameLabel; passwordLabel;
+        var userNameLabel, passwordLabel;
         function init() {
             userNameLabel = document.getElementById('userNameLabel');
             passwordLabel = document.getElementById('passwordLabel');
@@ -68,7 +68,7 @@
             border-style:solid;
             border-width:3px;
             border-color:rgb(217,133,59);
-            background-image: url("../../Content/images/Polygon-final.jpg");
+            background-image: url("<%:Url.Content("~/Content/images/Polygon-final.jpg")%>");
             background-color: transparent;
             padding: 20px;
             width: 300px;
@@ -192,13 +192,11 @@
             color:Red;
         }
     </style>
-    <% using (Html.BeginForm())
+    <% using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
        { %>
     <%: Html.ValidationSummary(true) %>
     <div id="Background0">
         <div id="Background1">
-            <%--<p id="FormMessage">
-                Please Enter Your Information</p>--%>
             <div id="Div-Form">
                 <div class="Div-TextBox">
                     <%: Html.TextBoxFor(model => model.UserName, new { @class="TextBox", @PlaceHolder="Username*" })%>
