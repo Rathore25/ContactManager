@@ -126,20 +126,40 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap.css" />
+    <Content Include="Content\bootstrap-3.3.5-dist\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap-3.3.5-dist\js\bootstrap.js" />
+    <Content Include="Content\bootstrap-3.3.5-dist\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-3.3.5-dist\js\npm.js" />
+    <Content Include="Content\css\bootstrapValidator.css" />
+    <Content Include="Content\datepicker\css\datepicker.css" />
+    <Content Include="Content\datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\images\deepakLamba.jpg" />
+    <Content Include="Content\js\bootstrapValidator.js" />
     <Content Include="Content\css\DatatableTheme.css" />
+    <Content Include="Content\images\ace.png" />
+    <Content Include="Content\images\backgroundSample.png" />
     <Content Include="Content\images\BlackWhiteAbstract-Polygon-Background-02-1024.jpg" />
+    <Content Include="Content\images\Centum_Learning_Logo.svg.png" />
     <Content Include="Content\images\contacts-iconSmall.png" />
     <Content Include="Content\images\delete-20x20.png" />
     <Content Include="Content\images\delete-25x25.png" />
     <Content Include="Content\images\edit-20x20.png" />
     <Content Include="Content\images\exit.png" />
+    <Content Include="Content\images\Femina.png" />
     <Content Include="Content\images\iOS-contacts-logo.ico" />
     <Content Include="Content\images\iOS-contacts-logo.png" />
+    <Content Include="Content\images\LeadSquared-Logo.png" />
     <Content Include="Content\images\Logout.png" />
+    <Content Include="Content\images\Niit.png" />
     <Content Include="Content\images\oie_transparent.png" />
     <Content Include="Content\images\OnHover.png" />
     <Content Include="Content\images\Polygon-final.jpg" />
     <Content Include="Content\images\SaveAsPdf 35x35.png" />
+    <Content Include="Content\images\Timespro.png" />
     <Content Include="Content\js\tableExport.jquery.plugin-master\html2canvas.js" />
     <Content Include="Content\js\tableExport.jquery.plugin-master\jquery.base64.js" />
     <Content Include="Content\js\tableExport.jquery.plugin-master\jspdf\jspdf.js" />
@@ -147,6 +167,7 @@
     <Content Include="Content\js\tableExport.jquery.plugin-master\jspdf\libs\sprintf.js" />
     <Content Include="Content\js\tableExport.jquery.plugin-master\tableExport.js" />
     <Content Include="Global.asax" />
+    <Content Include="Shared\DemoLandingPage.html" />
     <Content Include="Views\Home\ErrorPage.aspx" />
     <Content Include="Views\Home\ForgotPassword.aspx" />
     <Content Include="Views\Home\Login.aspx" />
@@ -167,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HTML pages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -184,6 +206,13 @@
     <Content Include="Shared\LoginRegisterMaster.Master" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\bootstrap-3.3.5-dist\css\bootstrap-theme.css.map" />
+    <None Include="Content\bootstrap-3.3.5-dist\css\bootstrap.css.map" />
+    <None Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Content\datepicker\less\datepicker.less" />
     <None Include="Content\js\tableExport.jquery.plugin-master\README.md" />
     <None Include="Content\js\tableExport.jquery.plugin-master\tableExport.jquery.json" />
   </ItemGroup>
@@ -203,7 +232,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50462</DevelopmentServerPort>
+          <DevelopmentServerPort>56732</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
