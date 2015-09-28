@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Register</title>
+    <link rel="icon" href="../Content/images/LeadSquared-FavIco.ico">
     <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
     <!-- Latest compiled and minified CSS -->
     <link href="../Content/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,7 +17,10 @@
     <script src="../Content/js/bootstrapValidator.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#DOB').datepicker();
+            $('#DOB').datepicker({
+                autoclose:true,
+                endDate: '+0d'
+            });
 
         });
         //        function formsubmit() {
@@ -136,6 +140,39 @@
         {
             border-top-style: none;
             box-shadow: inset 0 0 0 rgba(255,255,255,.1);
+        }
+        .navbar-toggle 
+        {
+            border: none;
+            background: transparent !important;
+        }
+        .navbar-toggle:hover 
+        {
+            background: transparent !important;
+        }
+        .navbar-toggle .icon-bar {
+            width: 22px;
+            transition: all 0.2s;
+        }
+        .navbar-toggle .top-bar {
+            transform: rotate(45deg);
+            transform-origin: 10% 10%;
+        }
+        .navbar-toggle .middle-bar {
+            opacity: 0;
+        }
+        .navbar-toggle .bottom-bar {
+            transform: rotate(-45deg);
+            transform-origin: 10% 90%;
+        }
+        .navbar-toggle.collapsed .top-bar {
+            transform: rotate(0);
+        }
+        .navbar-toggle.collapsed .middle-bar {
+            opacity: 1;
+        }
+        .navbar-toggle.collapsed .bottom-bar {
+            transform: rotate(0);
         }
         .form-group
         {
@@ -405,9 +442,10 @@
                         <img src="../Content/images/LeadSquared-Logo.png" class="logo-style" alt="Logo" />
                     </div>
                 </div>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarlinks">
-                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
-                    </span>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarlinks" aria-expanded="false" aria-controls="navbarlinks">
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
                 </button>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8" style="padding: 0px 20px;">
                     <div class="collapse navbar-collapse" id="navbarlinks">
@@ -469,7 +507,8 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                     <input type="password" class="form-control" placeholder="Enter Password" data-bv-field="Password"
-                                        name="Password" />
+                                        name="Password" data-bv-identical="true" data-bv-identical-field="ConfirmPassword"
+                                        data-bv-identical-message="The password and its confirm are not the same" />
                                 </div>
                             </div>
                         </div>
@@ -478,7 +517,8 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                     <input type="password" class="form-control" placeholder="Re-enter Password" data-bv-field="ConfirmPassword"
-                                        name="ConfirmPassword" />
+                                        name="ConfirmPassword" data-bv-identical="true" data-bv-identical-field="Password"
+                                        data-bv-identical-message="The password and its confirm are not the same" />
                                 </div>
                             </div>
                         </div>
@@ -577,7 +617,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog" style="top: 32%;">
+    <div id="myModal" class="modal fade" role="dialog" style="top:28%">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">

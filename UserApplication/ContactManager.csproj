@@ -138,6 +138,7 @@
     <Content Include="Content\datepicker\css\datepicker.css" />
     <Content Include="Content\datepicker\js\bootstrap-datepicker.js" />
     <Content Include="Content\images\deepakLamba.jpg" />
+    <Content Include="Content\images\LeadSquared-FavIco.ico" />
     <Content Include="Content\js\bootstrapValidator.js" />
     <Content Include="Content\css\DatatableTheme.css" />
     <Content Include="Content\images\ace.png" />

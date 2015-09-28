@@ -78,7 +78,6 @@
                 // Disable the default submission first
                 .on('click.bv', function(e) {
                     e.preventDefault();
-                    debugger;
                     if(that.validate().isValid())
                         $("#myModal").modal();
                 })
